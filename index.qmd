@@ -2,7 +2,7 @@
 title: "Project Title"
 subtitle: "INFO 523 - Final Project"
 author: 
-  - name: "Team name - Team member 1, Team member 2,..."
+  - name: "Team 4 - Jack Stevens, Lila Carruthers, Rithik Mehta"
     affiliations:
       - name: "College of Information Science, University of Arizona"
 description: "Project description"
