@@ -36,6 +36,17 @@ We decided to use the United States Environmental Protection Agency’s (EPA) 20
 
 This dataset was ideal for our goal to create an interactive dashboard portraying visual patterns and trends with air quality in different regions and seasons over time. Additionally, it will allow for further discovery into the differences in air quality over weeks, months and the whole year. Furthermore, being able to create a dashboard with real environmental implications was important as we would be able to visualize how pollution has affected certain regions over the last year. Using daily data with several data points will also allow us to create a more accurate representation of pollution and air quality in different regions and seasons over 2025. Ultimately, the EPA’s daily AQI index dataset was ideal for portraying air quality in an interactive dashboard through data driven visualization.
 
+Variables:
+State Name: US State
+County Name: US County Name
+State Code: Code for State
+County Code: Code for County
+Date: date of measurement
+AQI: Air Quality Index value
+Category: Qualitative value for AQI
+Defining Paramter: AQS code corresponding to the parameter measured
+Defining Site: Site corresponding to the site where measurement was reported from
+Number of Sites Reporting: Total amount of sites with recording measurement
 
 ## Questions
 
