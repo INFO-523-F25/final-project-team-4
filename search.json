@@ -1,0 +1,121 @@
+[
+  {
+    "objectID": "proposal.html",
+    "href": "proposal.html",
+    "title": "Exploration of Air Quality Index Geographic and Seasonal Factors",
+    "section": "",
+    "text": "The overall goal of our project is to generate an interactive dashboard that displays information about air quality in the United States over the past year. Ideally, this dashboard could serve as a tool for people to better understand the factors influencing air quality both in their area and across the United States more broadly. We are aiming to have visualizations for each of the major air pollutants in addition to an overall graph of the AQI over time. Further visualizations could include a rendering of the AQI scale showing the range from good to hazardous, a graph of the top 10 counties with the worst air quality on average, or another similar visual displaying patterns or outliers in our data. The dashboard will include filters for time period, season, and geographic region. During the EDA phase of our project, we may also choose to enrich the data further with population density by county or other key features that may provide further context to the dashboard. Our dashboard will be one page to ensure data can be easily compared and it is as intuitive to use as possible.\nimport numpy as np\nimport pandas as pd"
+  },
+  {
+    "objectID": "proposal.html#dataset",
+    "href": "proposal.html#dataset",
+    "title": "Exploration of Air Quality Index Geographic and Seasonal Factors",
+    "section": "Dataset",
+    "text": "Dataset\n\ndata = pd.read_csv('./data/daily_aqi_by_county_2025.csv')\nprint(data.shape)\n\n(105869, 10)\n\n\nWe decided to use the United States Environmental Protection Agency’s (EPA) 2025 daily Air Quality Index (AQI) dataset by county. It contains 105,869 rows with 10 variables showing insight into daily air quality and how it changes over days, months, and seasons. The dataset comes from collections of air quality measurements by specific monitoring stations over the year. Key variables include the location of the measurement, the AQI value (standardized value representing the pollution level), and the air quality category (qualitative variable representing how poor or great the air quality is on a scale).\nThis dataset was ideal for our goal to create an interactive dashboard portraying visual patterns and trends with air quality in different regions and seasons over time. Additionally, it will allow for further discovery into the differences in air quality over weeks, months and the whole year. Furthermore, being able to create a dashboard with real environmental implications was important as we would be able to visualize how pollution has affected certain regions over the last year. Using daily data with several data points will also allow us to create a more accurate representation of pollution and air quality in different regions and seasons over 2025. Ultimately, the EPA’s daily AQI index dataset was ideal for portraying air quality in an interactive dashboard through data driven visualization.\nVariables: State Name: US State County Name: US County Name State Code: Code for State County Code: Code for County Date: date of measurement AQI: Air Quality Index value Category: Qualitative value for AQI Defining Paramter: AQS code corresponding to the parameter measured Defining Site: Site corresponding to the site where measurement was reported from Number of Sites Reporting: Total amount of sites with recording measurement"
+  },
+  {
+    "objectID": "proposal.html#questions",
+    "href": "proposal.html#questions",
+    "title": "Exploration of Air Quality Index Geographic and Seasonal Factors",
+    "section": "Questions",
+    "text": "Questions\n\nHow the Air Quality Index (AQI) changes across different regions and over time: Are there any extreme fluctuations in AQI within certain regions or shifts in patterns throughout the year?\nHow do AQI factors change over time: Are there seasonality or geographic factors that contribute to the AQI or its key contributors?"
+  },
+  {
+    "objectID": "proposal.html#analysis-plan",
+    "href": "proposal.html#analysis-plan",
+    "title": "Exploration of Air Quality Index Geographic and Seasonal Factors",
+    "section": "Analysis plan",
+    "text": "Analysis plan\nWeek 1 - EDA / Preprocessing\nThis week should be focused on understanding the data and any interesting relationships between the features and the target variable (AQI value). Next, using the findings from the EDA stage, the focus should be handling any data quality issues (missing value, encoding categorical variables, scaling values) and removing any unnecessary columns. By the end of this week, we should have a summary of key findings from the EDA and a preprocessed dataset.\nWeek 2 - Modeling\nThis week should be focused on performing advanced modeling techniques, such as OLS and other regression models to understand the importance of the features and rank the influence that the features have on the target variable. By the end of this week, we should have a list of features that contribute to the Air Quality Index.\nWeek 3 - Dashboard Wireframing\nThis week should be focused on designing and mapping out the metrics to use on the interactive dashboard. This should include the type of visuals, the expected interactions of variables and require data structures to build the report. By the end of this week, we should have a rough sketch of the dashboard that answers the questions above.\nWeek 4 - Dashboard Building\nThis week should be focused on implementing wireframed dashboards using the Stream-lit library. This should include the building, testing, and finding key interactions between the visuals to demonstrate during the final presentation. By the end of this week, we should have a deployed dashboard with 2-3 patterns identified by the dashboard.\nWeek 5 - Final Report\nThis week should be focused on completing the final write-up and presentation. The group members for each week should discuss their decision about the work they were responsible for. By the end of the week, we should have a finalized report and recorded video."
+  },
+  {
+    "objectID": "proposal.html#repository-structure",
+    "href": "proposal.html#repository-structure",
+    "title": "Exploration of Air Quality Index Geographic and Seasonal Factors",
+    "section": "Repository Structure",
+    "text": "Repository Structure\nData-\nThis folder should contain the datasets that are being used for this analysis. This folder should have a README.md that contains the description of the dataset as well.\nImage-\nThis folder should contain any graphs / images that we plan on using for the presentation.\nextra-\nThis folder should contain any additional notebooks that we would like to store for generating graphs.\nOther Files/Folders -\nAny other files/folders are responsible for the generation and content presented in the quarto site."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Project Title",
+    "section": "",
+    "text": "Add project abstract here."
+  },
+  {
+    "objectID": "index.html#abstract",
+    "href": "index.html#abstract",
+    "title": "Project Title",
+    "section": "",
+    "text": "Add project abstract here."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "This project was developed by Team 4 For INFO 523 - Data Mining and Discovery at the University of Arizona, taught by Dr. Greg Chism. The team is comprised of the following team members.\n\nTeam member 1: Jack Stevens - First Year MS Data Science Student\nTeam member 2: Lila Carruthers\nTeam member 3: Rithik Mehta"
+  },
+  {
+    "objectID": "presentation.html#quarto",
+    "href": "presentation.html#quarto",
+    "title": "Project title",
+    "section": "Quarto",
+    "text": "Quarto\n\nThe presentation is created using the Quarto CLI\n## sets the start of a new slide"
+  },
+  {
+    "objectID": "presentation.html#layouts",
+    "href": "presentation.html#layouts",
+    "title": "Project title",
+    "section": "Layouts",
+    "text": "Layouts\nYou can use plain text\n\n\n\nor bullet points1\n\n\nor in two columns\n\n\nlike\nthis\n\nAnd add footnotes"
+  },
+  {
+    "objectID": "presentation.html#code",
+    "href": "presentation.html#code",
+    "title": "Project title",
+    "section": "Code",
+    "text": "Code\n\n\n                            OLS Regression Results                            \n==============================================================================\nDep. Variable:                    mpg   R-squared:                       0.073\nModel:                            OLS   Adj. R-squared:                  0.070\nMethod:                 Least Squares   F-statistic:                     30.59\nDate:                Thu, 30 Oct 2025   Prob (F-statistic):           5.84e-08\nTime:                        19:03:06   Log-Likelihood:                -1346.4\nNo. Observations:                 392   AIC:                             2697.\nDf Residuals:                     390   BIC:                             2705.\nDf Model:                           1                                         \nCovariance Type:            nonrobust                                         \n==============================================================================\n                 coef    std err          t      P&gt;|t|      [0.025      0.975]\n------------------------------------------------------------------------------\nconst         35.8015      2.266     15.800      0.000      31.347      40.257\nspeed       -354.7055     64.129     -5.531      0.000    -480.788    -228.623\n==============================================================================\nOmnibus:                       27.687   Durbin-Watson:                   0.589\nProb(Omnibus):                  0.000   Jarque-Bera (JB):               18.976\nSkew:                           0.420   Prob(JB):                     7.57e-05\nKurtosis:                       2.323   Cond. No.                         169.\n==============================================================================\n\nNotes:\n[1] Standard Errors assume that the covariance matrix of the errors is correctly specified."
+  },
+  {
+    "objectID": "presentation.html#plots",
+    "href": "presentation.html#plots",
+    "title": "Project title",
+    "section": "Plots",
+    "text": "Plots"
+  },
+  {
+    "objectID": "presentation.html#plot-and-text",
+    "href": "presentation.html#plot-and-text",
+    "title": "Project title",
+    "section": "Plot and text",
+    "text": "Plot and text\n\n\n\nSome text\ngoes here"
+  },
+  {
+    "objectID": "presentation.html#tables",
+    "href": "presentation.html#tables",
+    "title": "Project title",
+    "section": "Tables",
+    "text": "Tables\nIf you want to generate a table, make sure it is in the HTML format (instead of Markdown or other formats), e.g.,\n\n\n\n\n\n\n\n\n\n\n\n\nspecies\n\n\n\nisland\n\n\n\nbill_length_mm\n\n\n\nbill_depth_mm\n\n\n\nflipper_length_mm\n\n\n\nbody_mass_g\n\n\n\nsex\n\n\n\n\n\n\n\n\n\n\n\n0\n\n\n\nAdelie\n\n\n\nTorgersen\n\n\n\n39.1\n\n\n\n18.7\n\n\n\n181.0\n\n\n\n3750.0\n\n\n\nMale\n\n\n\n\n\n\n\n1\n\n\n\nAdelie\n\n\n\nTorgersen\n\n\n\n39.5\n\n\n\n17.4\n\n\n\n186.0\n\n\n\n3800.0\n\n\n\nFemale\n\n\n\n\n\n\n\n2\n\n\n\nAdelie\n\n\n\nTorgersen\n\n\n\n40.3\n\n\n\n18.0\n\n\n\n195.0\n\n\n\n3250.0\n\n\n\nFemale\n\n\n\n\n\n\n\n4\n\n\n\nAdelie\n\n\n\nTorgersen\n\n\n\n36.7\n\n\n\n19.3\n\n\n\n193.0\n\n\n\n3450.0\n\n\n\nFemale\n\n\n\n\n\n\n\n5\n\n\n\nAdelie\n\n\n\nTorgersen\n\n\n\n39.3\n\n\n\n20.6\n\n\n\n190.0\n\n\n\n3650.0\n\n\n\nMale"
+  },
+  {
+    "objectID": "presentation.html#images",
+    "href": "presentation.html#images",
+    "title": "Project title",
+    "section": "Images",
+    "text": "Images\n\nImage credit: Danielle Navarro, Percolate."
+  },
+  {
+    "objectID": "presentation.html#math-expressions",
+    "href": "presentation.html#math-expressions",
+    "title": "Project title",
+    "section": "Math Expressions",
+    "text": "Math Expressions\nYou can write LaTeX math expressions inside a pair of dollar signs, e.g. $\\alpha+\\beta$ renders \\(\\alpha + \\beta\\). You can use the display style with double dollar signs:\n$$\\bar{X}=\\frac{1}{n}\\sum_{i=1}^nX_i$$\n\\[\n\\bar{X}=\\frac{1}{n}\\sum_{i=1}^nX_i\n\\]\nLimitations:\n\nThe source code of a LaTeX math expression must be in one line, unless it is inside a pair of double dollar signs, in which case the starting $$ must appear in the very beginning of a line, followed immediately by a non-space character, and the ending $$ must be at the end of a line, led by a non-space character;\nThere should not be spaces after the opening $ or before the closing $."
+  },
+  {
+    "objectID": "presentation.html#feeling-adventurous",
+    "href": "presentation.html#feeling-adventurous",
+    "title": "Project title",
+    "section": "Feeling adventurous?",
+    "text": "Feeling adventurous?\n\nYou are welcomed to use the default styling of the slides. In fact, that’s what I expect majority of you will do. You will differentiate yourself with the content of your presentation.\nBut some of you might want to play around with slide styling. Some solutions for this can be found at https://quarto.org/docs/presentations/revealjs."
+  }
+]
