@@ -18,11 +18,13 @@ execute:
   warning: false
 jupyter: python3
 ---
+The overall goal of our project is to generate an interactive dashboard that displays information about air quality in the United States over the past year. Ideally, this dashboard could serve as a tool for people to better understand the factors influencing air quality both in their area and across the United States more broadly. We are aiming to have visualizations for each of the major air pollutants in addition to an overall graph of the AQI over time. Further visualizations could include a rendering of the AQI scale showing the range from good to hazardous, a graph of the top 10 counties with the worst air quality on average, or another similar visual displaying patterns or outliers in our data. The dashboard will include filters for time period, season, and geographic region. During the EDA phase of our project, we may also choose to enrich the data further with population density by county or other key features that may provide further context to the dashboard. Our dashboard will be one page to ensure data can be easily compared and it is as intuitive to use as possible. 
 
 ```{python}
 #| label: load-pkgs
 #| message: false
 import numpy as np
+import pandas as pd
 ```
 
 ## Dataset
@@ -30,6 +32,8 @@ import numpy as np
 ```{python}
 #| label: load-dataset
 #| message: false
+data = pd.read_csv('./data/daily_aqi_by_county_2025.csv')
+print(data.shape)
 ```
 
 We decided to use the United States Environmental Protection Agency’s (EPA) 2025 daily Air Quality Index (AQI) dataset by county. It contains 105,869 rows with 10 variables showing insight into daily air quality and how it changes over days, months, and seasons.  The dataset comes from collections of air quality measurements by specific monitoring stations over the year. Key variables include the location of the measurement, the AQI value (standardized value representing the pollution level), and the air quality category (qualitative variable representing how poor or great the air quality is on a scale). 
@@ -88,7 +92,7 @@ This folder should contain the datasets that are being used for this analysis. T
 
 This folder should contain any graphs / images that we plan on using for the presentation. 
 
-**_extra-**
+**extra-**
 
 This folder should contain any additional notebooks that we would like to store for generating graphs. 
 
