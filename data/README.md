@@ -3,7 +3,23 @@
 -   Source URL: https://aqs.epa.gov/aqsweb/airdata/download_files.html
 
 # Codebook for our Dataset
+```{python}
+#| label: load-dataset
+#| message: false
+data = pd.read_csv('./data/daily_aqi_by_county_2025.csv')
+print(f'Data Shape of "daily_aqi_by_county_2025.csv:"', data.shape, '\n')
+print('Data Types for "daily_aqi_by_county_2025.csv":')
+print(data.dtypes)
+data2 = pd.read_csv('./data/daily_TEMP_2025.csv')
+print(f'Data Shape of "daily_TEMP_2025.csv:"', data2.shape, '\n')
+print('Data Types for "daily_TEMP_2025.csv":')
+print(data2.dtypes)
+data3 = pd.read_csv('./data/daily_WIND_2025.csv')
+print(f'Data Shape of "daily_WIND_2025.csv:"', data2.shape, '\n')
+print('Data Types for "daily_TEMP_2025.csv":')
+print(data2.dtypes)
 
+```
 ## Variable Names and Descriptions:
 
 -   **variable**: Description (with units, where applicable)
