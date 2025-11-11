@@ -41,6 +41,8 @@ import pandas as pd
 #| label: load-dataset
 #| message: false
 data = pd.read_csv('./data/daily_aqi_by_county_2025.csv')
+data2 = pd.read_csv('./data/daily_TEMP_2025.csv')
+data3 = pd.read_csv('./data/daily_WIND_2025.csv')
 print(f'Data Shape of "daily_aqi_by_county_2025.csv:"', data.shape, '\n')
 print('Data Types for "daily_aqi_by_county_2025.csv":')
 print(data.dtypes)
