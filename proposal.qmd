@@ -41,11 +41,18 @@ import pandas as pd
 #| label: load-dataset
 #| message: false
 data = pd.read_csv('./data/daily_aqi_by_county_2025.csv')
-data2 = pd.read_csv('./data/daily_TEMP_2025.csv')
-data3 = pd.read_csv('./data/daily_WIND_2025.csv')
 print(f'Data Shape of "daily_aqi_by_county_2025.csv:"', data.shape, '\n')
 print('Data Types for "daily_aqi_by_county_2025.csv":')
 print(data.dtypes)
+data2 = pd.read_csv('./data/daily_TEMP_2025.csv')
+print(f'Data Shape of "daily_TEMP_2025.csv:"', data2.shape, '\n')
+print('Data Types for "daily_TEMP_2025.csv":')
+print(data2.dtypes)
+data3 = pd.read_csv('./data/daily_WIND_2025.csv')
+print(f'Data Shape of "daily_WIND_2025.csv:"', data2.shape, '\n')
+print('Data Types for "daily_TEMP_2025.csv":')
+print(data2.dtypes)
+
 ```
 
 We decided to use the United States Environmental Protection Agency’s (EPA) 2025 daily Air Quality Index (AQI) dataset by county. It contains 
@@ -83,6 +90,20 @@ was ideal for portraying air quality in an interactive dashboard through data dr
 - Defining Site: Site corresponding to the site where measurement was reported from
 
 - Number of Sites Reporting: Total amount of sites with recording measurement
+
+## Data Types:
+
+-   State Name: String
+-   County Name: String
+-   State Code: Int
+-   County Code: Int
+-   Date: String
+-   AQI: Int
+-   Category: String
+-   Defining Parameter: String
+-   Defining Site: String
+-   Number of Sites Reporting: Int
+
 
 ## Questions
 
