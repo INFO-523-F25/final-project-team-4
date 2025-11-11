@@ -17,35 +17,6 @@ The overall goal of our project is to generate an interactive dashboard that dis
 We decided to use the United States Environmental Protection Agency’s (EPA) 2025 daily Air Quality Index (AQI) dataset by county. It contains 105,869 rows with 10 variables showing insight into daily air quality and how it changes over days, months, and seasons.  The datasets come from collections of air quality, wind and temperature measurements by specific monitoring stations over the year. Key variables include the location of the measurement, temperature, the AQI value (standardized value representing the pollution level), and the air quality category (qualitative variable representing how poor or great the air quality is on a scale). 
 This dataset was ideal for our goal to create an interactive dashboard portraying visual patterns and trends with air quality in different regions and seasons over time. Additionally, it will allow for further discovery into the differences in air quality over weeks, months and the whole year. Furthermore, being able to create a dashboard with real environmental implications was important as we would be able to visualize how pollution has affected certain regions over the last year. Using daily data with several data points will also allow us to create a more accurate representation of pollution and air quality in different regions and seasons over 2025. Ultimately, the EPA’s daily AQI index dataset was ideal for portraying air quality in an interactive dashboard through data driven visualization.
 
-
-## Variable Names and Descriptions:
-
--   **variable**: Description (with units, where applicable)
--   State Name: US State
--   County Name: US County Name
--   State Code: Code for State
--   County Code: Code for County
--   Date: date of measurement
--   AQI: Air Quality Index value
--   Category: Qualitative value for AQI
--   Defining Paramter: AQS code corresponding to the parameter measured
--   Defining Site: Site corresponding to the site where measurement was reported from
--   Number of Sites Reporting: Total amount of sites with recording measurement
-
-## Data Types:
-
--   State Name: String
--   County Name: String
--   State Code: Int
--   County Code: Int
--   Date: String
--   AQI: Int
--   Category: String
--   Defining Parameter: String
--   Defining Site: String
--   Number of Sites Reporting: Int
-
-
 ## Questions
 
 1. How the Air Quality Index (AQI) changes across different regions and over time: Are there any extreme fluctuations in AQI within certain regions or shifts in patterns throughout the year?
