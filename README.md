@@ -6,8 +6,6 @@ Final project repo for INFO 523 - Fall 2025.
 
 # Data
 -   Dataset 1: United States Environmental Protection Agency’s (EPA) 2025 daily Air Quality Index (AQI) dataset: contains 57,012 rows with 8 variables showing insight into daily air quality and how it changes over days, months, and seasons.
--   Dataset 2: United States Environmental Protection Agency’s 2025 daily wind dataset: contains 129,451 rows with 29 variables showing insight into daily wind speed and how it changes over regions and the year.
--   Dataset 3: United States Environmental Protection Agency’s 2025 daily temperature dataset: contains 82,755 rows with 29 variables showing insight into daily temperature and how it changes over regions and the year.
 -   Source URL for all: https://aqs.epa.gov/aqsweb/airdata/download_files.html 
 
 # High-level goal and expanded description:
