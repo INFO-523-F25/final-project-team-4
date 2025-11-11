@@ -67,7 +67,7 @@ This week should be focused on designing and mapping out the metrics to use on t
  
 **Week 4 - Dashboard Building**
 
-This week should be focused on implementing wireframed dashboards using the Stream-lit library. This should include the building, testing, and finding key interactions between the visuals to demonstrate during the final presentation. By the end of this week, we should have a deployed dashboard with 2-3 patterns identified by the dashboard.
+This week should be focused on implementing wireframed dashboards using the Stream-lit library. This should include the building, testing, and finding key interactions between the visuals to demonstrate during the final presentation. By the end of this week, we should have a deployed dashboard with 2-3 patterns identified by the dashboard that demonstrate correlation between the AQI value and chosen features of the dashboard.
  
 **Week 5 - Final Report**
 
@@ -82,11 +82,20 @@ This folder should contain the datasets that are being used for this analysis. T
 
 **Image-** 
 
-This folder should contain any graphs / images that we plan on using for the presentation. 
+This folder should contain any graphs / images that we plan on using for the presentation. This is where the wireframe of the dashboard will 
+be stored. 
 
-**extra-**
+**notebook-** 
 
-This folder should contain any additional notebooks that we would like to store for generating graphs. 
+This folder should contain the work that we complete each week. These notebooks should be used to demonstrate analytical thought process behind the problem and experimentation. 
+
+**src-** 
+
+This is where any scripts will be stored to referenced in the notebooks. This could be any custom graphing, preprocessing, or model validation functions. 
+
+**All other files / folders** 
+
+This items will be used to generate the final presenation and site of our findings. 
 
 
 #### Disclosure:
