@@ -1,7 +1,7 @@
 ---
-title: "Project title"
-subtitle: "INFO 523 - Summer 2025 - Final Project"
-author: "Author names"
+title: "United States AQI Values - Analysis / Dashboard"
+subtitle: "INFO 523 - Fall 2025 - Final Project"
+author: "Jack Stevens"
 title-slide-attributes:
   data-background-image: images/watercolour_sys02_img34_teacup-ocean.jpg
   data-background-size: stretch
@@ -51,19 +51,66 @@ mtcars['speed'] = mtcars['horsepower'] / mtcars['weight']
 penguins = sns.load_dataset('penguins').dropna()
 ```
 
-# Using Quarto for presentations
+# Introduction
 
-## Quarto
+## Questions
 
--   The presentation is created using the Quarto CLI
+1. How the Air Quality Index (AQI) changes across different regions and over time: Are there any extreme fluctuations in AQI within certain
+regions or shifts in patterns throughout the year?
 
--   `##` sets the start of a new slide
+2. How do AQI factors change over time: Are there seasonality or geographic factors that contribute to the AQI or its key contributors?
+
+## Dataset 
+
+Insert Info about Dataset 
+
+## EDA 
+
+Insert Graphs 
+
+
+## Overall Findings from EDA
+
+- Finding One 
+- Finding Two
+
+# Modeling
+
+## Summary output of Regression Model 
+
+Insert Summary Output from regression model 
+
+# Dashboard 
+
+## Wireframe
+
+![Image credit: Danielle Navarro, Percolate.](images/AQI%20County%20Heatamp.png){fig-align="center" width="500"}
+
+Interactive Features
+
+- Select Time frame 
+- Select State
+
+## StreamLit Dashboard 
+
+Insert Dashboard screenshot
+
+## Dashboard Finding
+
+- Possible outliers within dataset 
+- General trends aligned with finding from modeling stage
+
+## Conclusion
+
+- Linear Regression was too bias of the model to be used for this type of problem, prehaps a random forest regression model. 
+- Adding data such as elevation, humidity and feature engineering could have helped with model accurary
+
 
 ## Layouts
 
 You can use plain text
 
-::: columns
+::::: columns
 ::: {.column width="40%"}
 -   or bullet points[^1]
 :::
@@ -71,7 +118,7 @@ You can use plain text
 ::: {.column width="60%"}
 or in two columns
 :::
-:::
+:::::
 
 [^1]: And add footnotes
 
@@ -108,7 +155,7 @@ plt.show()
 
 ## Plot and text
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 -   Some text
 
@@ -124,7 +171,7 @@ sns.boxplot(data=penguins, x='bill_length_mm', y='species', hue='species', ax=ax
 plt.show()
 ```
 :::
-:::
+:::::
 
 # A new section...
 
