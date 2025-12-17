@@ -1,9 +1,12 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
+from src.data_preprocessing import df_groupby_average, load_preprocessed_data
 
 
 
@@ -17,54 +20,65 @@ def configure_page():
 def configure_overview(): 
     st.markdown('## AQI Dashboard')
     st.markdown('This dashboard will show visual AQI measurements from January 2025 to July 2025')
-    st.markdown('The aim is to understand geographical and seasonal impacts of AQI across the United States')
+    st.markdown('The aim is to understand geographical and seasonal impacts of AQI acoss the United States')
 
-def configure_sidebar(state_list):
-    month = st.sidebar.number_input("Month Number", 1, 7, 1)
+def configure_sidebar(state_list, month_name):
+    month = st.sidebar.selectbox(
+        "Month Selection", 
+        month_name)
     state_selected = st.sidebar.selectbox(
         "State Selection", 
         state_list)  
     return month, state_selected
 
-def create_map_plot(month_number:int, data): 
-    filter_data = data[data['Month'] == month_number]
-    st.markdown(f'### USA AQI for Month {month_number}')
+def create_map_plot(month_name, data): 
+    filter_data = data[data['Month Name'] == month_name]
+    st.markdown(f'### USA AQI for {month_name}')
     fig1 = px.choropleth(filter_data, locations= filter_data['STATEAB'], locationmode= "USA-states",
-                        color = 'AQI', color_continuous_scale= "inferno", 
+                        color = 'AQI', color_continuous_scale= "thermal", 
                         range_color = (0, 100), scope = "usa")
     return fig1
 
 def create_line_plot(state, data):
     filter_data = data[data['STATEAB'] == state]
     st.markdown(f'### Temperature, Wind and AQI over Time for {state}')
-    filter_data = pd.melt(filter_data, id_vars = 'Month', value_vars= ['AQI', 'Temp Arithmetic Mean', 'Wind Arithmetic Mean'])
-    st.line_chart(filter_data, x = "Month", y = "value", color = 'variable')
+    filter_data = pd.melt(filter_data, id_vars = 'Month Name', value_vars= ['AQI', 'Temp Arithmetic Mean', 'Wind Arithmetic Mean'])
+    st.line_chart(filter_data, x = "Month Name", y = "value", color = 'variable')
+
+
+def create_county_map(state,data):
+    filter_data = data[data['STATEAB'] == state]
+    data_grouped_month_county = df_groupby_average(filter_data, ['County Name', 'Month Name'], agg_col= ['AQI', 'Temp Arithmetic Mean', 'Wind Arithmetic Mean'])
+    data_grouped_pivot = data_grouped_month_county.pivot( index = 'County Name', columns = 'Month Name', values = 'AQI')
+    plt.figure(figsize = (5, 5))
+    sns.heatmap(data_grouped_pivot, annot = True, cmap = 'coolwarm')
+    plt.xlabel("Month")
+    plt.ylabel("County Name")
+    plt.title(f'{state} Country AQI values')
+    st.pyplot(plt, width= "content")
+    # return plt
+
+
 
 def main():
-    data_df = pd.read_csv('./data/data_preprocessed.csv')
-    data_grouped_month = data_df[['STATEAB', 'Month', 'AQI', 'Temp Arithmetic Mean', 'Wind Arithmetic Mean']].groupby(['STATEAB', 'Month']).mean().reset_index()
-    state_name = tuple(data_grouped_month['STATEAB'].unique())
+    data_df = load_preprocessed_data('./data/data_preprocessed.csv')
+    data_grouped_month_state = df_groupby_average(data_df, ['STATEAB', 'Month Name'], agg_col= ['AQI', 'Temp Arithmetic Mean', 'Wind Arithmetic Mean', 'Month'])
+    state_name = tuple(data_grouped_month_state['STATEAB'].unique())
+    month_name = data_grouped_month_state['Month Name'].unique().to_list()
     configure_page()
     configure_overview()
-    month, state = configure_sidebar(state_name)
-    fig = create_map_plot(month, data_grouped_month)
+    month, state = configure_sidebar(state_name, month_name)
+    fig = create_map_plot(month, data_grouped_month_state)
     st.plotly_chart(fig)
+    create_line_plot(state, data_grouped_month_state)
+    create_county_map(state= state, data = data_df)
     
-    create_line_plot(state, data_grouped_month)
+
+
+
+
 if __name__ == "__main__":
     main()
-
-# data_df = pd.read_csv('./data/data_preprocessed.csv')
-# data_df = data_df[["State Name", "Temp Arithmetic Mean", "Wind Arithmetic Mean", "AQI"]].groupby('State Name').mean()
-# st.header("AQI vs Temp. By State Name")
-# st.scatter_chart(data_df[["Temp Arithmetic Mean", "Wind Arithmetic Mean", "AQI"]], x = "Temp Arithmetic Mean", y = "AQI")
-# data_df = data_df.reset_index()
-# state_df = pd.read_csv('./data/States.csv').rename(columns = {'Postal': 'STATEAB'})
-# data_df = data_df.merge(state_df, how = 'left', left_on = 'State Name', right_on = 'State')
-
-# fig1 = px.choropleth(data_df, locations= data_df['STATEAB'], locationmode= "USA-states",
-#                      color = 'AQI', color_continuous_scale= "inferno", 
-#                      range_color = (0, 100), scope = "usa")
 
 
 

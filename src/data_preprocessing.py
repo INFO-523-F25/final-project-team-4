@@ -1,35 +1,55 @@
-# merged_df.to_csv('./data/data_preprocessed.csv', index = False)
-# merged_df['State Name'].unique()
-data_df = pd.read_csv('./data/data_preprocessed.csv')
-# data_df = data_df[["State Name", "Temp Arithmetic Mean", "Wind Arithmetic Mean", "AQI"]].groupby('State Name').mean()
-# st.header("AQI vs Temp. By State Name")
-# st.scatter_chart(data_df[["Temp Arithmetic Mean", "Wind Arithmetic Mean", "AQI"]], x = "Temp Arithmetic Mean", y = "AQI")
-# data_df = data_df.reset_index()
-# print(merged_df.isna().sum())
+import pandas as pd 
 
-# state_df = pd.read_csv('./data/States.csv').rename(columns = {'Postal': 'STATEAB'})
-# data_df = data_df.merge(state_df, how = 'left', left_on = 'State Name', right_on = 'State')
-# data_df = data_df[['State Name', 'STATEAB', 'Date Local', 'Temp Arithmetic Mean', 'Wind Arithmetic Mean', 'AQI', 'AQI Category']]
-# data_df['Date Local'] = pd.to_datetime(data_df['Date Local'])
-# data_df['Month'] = data_df['Date Local'].dt.month
-# # print(data_df[data_df['STATEAB'].isna()]['State Name'].unique())
+def load_csv(path):
+    data = None
+    try:
+        data = pd.read_csv(path)
+    except FileExistsError:
+        print('No file found')
+    return data
 
-import seaborn as sns 
-import matplotlib.pyplot as plt
-data_df = pd.read_csv('./data/data_preprocessed.csv')
-data_grouped_month = data_df[['STATEAB', 'Month', 'AQI', 'Temp Arithmetic Mean', 'Wind Arithmetic Mean']].groupby(['STATEAB', 'Month']).mean().reset_index()
-filter_data = data_grouped_month[data_grouped_month ['STATEAB'] == 'AZ']
-filter_data = pd.melt(filter_data, id_vars = 'Month', value_vars= ['AQI', 'Temp Arithmetic Mean', 'Wind Arithmetic Mean'])
+def add_state_code(data_df):
+    state_df = pd.read_csv('./data/States.csv').rename(columns = {'Postal': 'STATEAB'})
+    data_df = data_df.merge(state_df, how = 'left', left_on = 'State Name', right_on = 'State')
+    return data_df
 
-# data_grouped_month[data_grouped_month['Month'] == 1]
+def adding_month(data_df, date_column):
+    data_df[date_column] = pd.to_datetime(data_df[date_column])
+    data_df['Month'] = data_df[date_column].dt.month
+    data_df['Month Name'] = data_df[date_column].dt.month_name()
+    data_df['Month Name'] = pd.Categorical(data_df['Month Name'], ordered = True, categories= ["January", "February", "March", "April", "May", 'June',"July"])
+    return data_df
 
-# state_name = tuple(data_grouped_month['STATEAB'].unique())
-# print(state_name)
+def df_groupby_average(data_df, group_list, agg_col):
+    grouped_data = data_df.groupby(group_list)[agg_col].mean().reset_index()
+    return grouped_data
 
-# data_grouped_month_pivot = data_grouped_month.pivot( index = 'STATEAB', columns= 'Month', values = "AQI")
-# sns.heatmap(data_grouped_month_pivot, cmap= 'crest', annot= True)
+def load_preprocessed_data(path):
+    data_df = load_csv(path= path)
+    data_df = add_state_code(data_df)
+    data_df = adding_month(data_df, 'Date Local')
+    return data_df
 
-# data_df.to_csv('./data/data_preprocessed.csv', index = False)
 
 
-# data_grouped_month_pivot[data_grouped_month_pivot['Month'] == 1]
+data = load_preprocessed_data('./data/data_preprocessed.csv')
+print(data[['State Name', 'STATEAB','County Name',  'Date Local', 'Month', 'Month Name', 'Temp Arithmetic Mean', 'Wind Arithmetic Mean', 'AQI', 'AQI Category']].head())
+print(data['Month Name'].unique())
+data_grouped_month = df_groupby_average(data, ['STATEAB', 'Month Name'], agg_col= ['AQI', 'Temp Arithmetic Mean', 'Wind Arithmetic Mean', 'Month'])
+
+filter_data = data[data['STATEAB'] == "AZ"]
+data_grouped_month_county = df_groupby_average(filter_data, ['County Name', 'Month Name'], agg_col= ['AQI', 'Temp Arithmetic Mean', 'Wind Arithmetic Mean'])
+data_grouped_pivot = data_grouped_month_county.pivot( index = 'County Name', columns = 'Month Name', values = 'AQI').fillna(0)
+print(data_grouped_pivot)
+
+
+
+
+
+
+
+
+
+
+
+
