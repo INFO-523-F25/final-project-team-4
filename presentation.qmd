@@ -84,7 +84,7 @@ Insert Summary Output from regression model
 
 ## Wireframe
 
-![Image credit: Danielle Navarro, Percolate.](images/AQI%20County%20Heatamp.png){fig-align="center" width="500"}
+![Dashboard Wirefram](images/AQI%20County%20Heatamp.png){fig-align="center" width="500"}
 
 Interactive Features
 
@@ -93,7 +93,8 @@ Interactive Features
 
 ## StreamLit Dashboard 
 
-Insert Dashboard screenshot
+![Overall Dashboard](images/AQI%20Dashboard%20Overview.png){fig-align="center" width="500"}
+
 
 ## Dashboard Finding
 
