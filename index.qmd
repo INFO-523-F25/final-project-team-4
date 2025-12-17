@@ -1,5 +1,5 @@
 ---
-title: "Project Title"
+title: "United States Air Quality Dashboard"
 subtitle: "INFO 523 - Final Project"
 author: 
   - name: "Team 4 - Jack Stevens, Lila Carruthers, Rithik Mehta"
@@ -20,4 +20,49 @@ jupyter: python3
 
 ## Abstract
 
-Add project abstract here.
+This project was designed to analyze daily Air Quality Index (AQI ) data from the United States Environmental Protection Agency. This analysis explored both geographical, seasonal, and weather-related features to understand their impact on the AQI value for the area. With the findings of the analysis, an interactive dashboard was created to explore the trends and visualize more complex relationships. 
+
+## Introduction/Motivation
+
+For our final project, we chose to develop an interactive dashboard depicting air quality, temperature and wind speeds across the United States in the first half of 2025. The initial idea for the dashboard was to create a tool that could help users understand factors that influence air quality both in their region and in the United States more broadly. The two research questions we sought to answer through this project were:
+
+1. How the Air Quality Index (AQI) changes across different regions and over time: Are there any extreme fluctuations in AQI within certain regions or shifts in patterns throughout the year?
+2. How do AQI factors change over time: Are there seasonality or geographic factors that contribute to the AQI or its key contributors?
+	
+The underlying datasets for our project come from the United States Environmental Protection Agency’s (EPA) 2025 daily Air Quality Index (AQI) dataset. Specifically, we used the “daily_aqi_by_county_2025”, “daily_TEMP_2025”, and “daily_WIND_2025” datasets from the download. Variables of particular interest to us included Date Local, State Name, County Name, AQI, Units of Measure, Arithmetic Mean (for both temperature and wind), and Method Name (also for both temperature and wind). We analyzed these variables over time in order to better understand how they influence one another and display this information in an interactive dashboard. 
+
+## Methods
+
+The first phase of our methodology was EDA and preprocessing. Overall, the datasets were very complete and there were not many missing values that had to be removed or imputated. The columns that had the majority of missing values were not used in our analysis so they could be dropped from the dataset. The primary focus of the EDA and preprocessing phase was to standardize the three datasets and merge them into one master dataset for further analysis and visualization. 
+Beginning with the AQI dataset, we chose to drop the State Code, County Code, and Number of Sites Reporting variables as we would not be using them throughout the rest of our project. From there, we standardized the names of columns so they were properly capitalized and specific to the AQI dataset so they could be easily differentiated later on. For example, the Category variable was renamed to AQI Category with the fact that we would be merging the datasets in mind. Once the AQI dataset was cleaned, it had 7 columns (1 integer and 6 objects) with no null values in any of the rows.
+
+From there we moved onto cleaning the temperature dataset. This was significantly larger than the air quality dataset and had many more columns of varying data types. There were 3 blank columns including Pollutant Standard, Event Type, and AQI we dropped from the dataset. Additionally, there were 2 incomplete columns titled Local Site Name (which we kept) and CBSA Name (which we dropped). Beyond these, we chose to drop State Code, County Code, Parameter Code, POC, Datum, Parameter Name, and City Name. Column renaming followed a similar structure to what we did for AQI, renaming columns like Method Name to Temp Method Name for easier identification later on. The last step in preprocessing this dataset was reordering the columns to match the order they appeared in the AQI dataset. After cleaning, the temperature dataset had 16 columns (5 float, 4 integer, and 7 objects) and only one incomplete column, being Local Site Name. 
+
+The data cleaning process for the wind dataset was almost identical to that of the temperature dataset, dropping and renaming the same columns and reordering the columns in the same way in the end. The resulting wind dataset also had 16 columns (5 float, 4 integer, and 7 objects) and only one incomplete column, being Local Site Name. Once all three datasets had been cleaned and standardized, the wind and temperature were merged on the columns that would have the same values including State Name, County Name, Local Site Name, Address, Site Num, Longitude, Latitude, and Date Local. This first merge was then merged once more with the AQI dataset using the State Name, County Name, and Date Local columns. The resulting master dataset had 28 columns (8 float, 8 integer, and 12 objects) with only the Local Site Name having some missing values remaining. 
+The final phase of the EDA and preprocessing stage was to visualize the three variables by state. This began by grouping the Temp Arithmetic Mean, Wind Arithmetic Mean, and AQI by State Name and calculating the mean value for each state. These values were converted into lists and inputted into a visualization with 3 subplots displaying the average temperature, wind, and AQI by state for the first 6 months of 2025. 
+
+## Analysis
+
+Two types of regression analyses were conducted. First, an Ordinary Least Squares (OLS) regression was created using the statsmodel library to quantify the linear relationship between AQI as the dependent variable and eight continuous predictors derived from wind and temperature measurements. A constant was added to the model to account for the intercept. The second model created was a predictive linear regression model that was trained, incorporating both the same continuous predictors and a categorical variable for AQI. As such, the dataset was split into training and testing subsets. Linear regression was then used to fit the model and evaluate performance with mean squared error (MSE) and R² metrics.
+
+
+## Results
+
+The OLS regression results showed multiple significant relationships. Wind observation count, first maximum wind value, and first maximum wind hour positively influenced AQI, while the wind arithmetic mean had a negative coefficient, suggesting that stronger consistent winds slightly reduce AQI. Temperature metrics also showed strong effects, with the first maximum temperature value and its hour positively associated with AQI, while the arithmetic mean temperature negatively influenced AQI. Notably, temperature predictors had larger values than wind, implying temperature plays a bigger role in affecting AQI variation. The model’s R² was very low at 0.038, suggesting that a simple linear model using only these continuous predictors explains little of the total variance in AQI, but specific predictors were shown to have much larger effects on AQI than others.
+In contrast, the linear regression model that included the categorical AQI variable achieved a much better overall predictive performance, with an R² of approximately 0.60 and an MSE of 137.36. Coefficients were generally consistent with the OLS results, reflecting positive contributions of first maximum values of wind and temperature and negative contributions of arithmetic means. These results highlight that while the weather variables predictors only explain small variability in AQI, combining them with temperature predictors most definitely improves predictive accuracy.
+
+Since the temperature and wind seemed to have the greatest impact on the linear regression model, these features need to be visualized in the dashboard. The visualizations chosen for the dashboard were designed to answer the guiding questions mentioned above. The heatmap of the United States provides the user with an overall perspective of the AQI values during a given month across the United States. By seeing the distribution of the AQI values, the user can identify groups of state that has similar AQI values due to similar geological features and weather patterns. The next visual provides trend lines of the average temperature, wind, and AQI over time for a selected state.  This visual allows the user to identify any seasonality patterns between these variables and the AQI values. The final visual is a heatmap that visualizes the average AQI values across the selected state’s counties and across each month. This visual helps highlight any complex geological factors across counties that may be influencing the AQI values. 
+
+Based on these visualizations, there were a couple of observations that were worth noting. When looking at the heatmap of the United States (Figure 1), the southwest has higher AQI values than the rest of the United States. This aligns with the linear regression model since the southwest consists of mostly warmer states.  However, it is interesting to see that Arkansas had a significantly higher AQI in January than its surrounding states. Another interesting observation was found when looking at the distribution of the AQI values across counties in Arizona (Figure 2),. There is a significant difference between Maricopa County and the other counties. This difference could be explained by the geographical differences between the counties. 
+
+::: {#fig-heathamp_usa}
+![United State Heatmap](images/AQI%20USA%20Heatmap.png)
+:::
+::: {#fig-heathamp_county}
+![Arizona County Heatmap](images/AQI%20County%20Heatamp.png){width="60%"}
+:::
+
+
+## Discussion/Conclusion
+
+Through this analysis, the interactions between the AQI values and external factors are more complex than a linear relationship. As a result, in order to better understand the features that better predict the AQI trends, the incorporation of other geographical features, such as elevation, could enrich our dataset more. Furthermore, additional historical AQI values for each state would help with the accuracy of the model and classification of the influential predictors. 
