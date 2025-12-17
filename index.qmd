@@ -64,3 +64,13 @@ Based on these visualizations, there were a couple of observations that were wor
 ## Discussion/Conclusion
 
 Through this analysis, the interactions between the AQI values and external factors are more complex than a linear relationship. As a result, in order to better understand the features that better predict the AQI trends, the incorporation of other geographical features, such as elevation, could enrich our dataset more. Furthermore, additional historical AQI values for each state would help with the accuracy of the model and classification of the influential predictors.
+
+## References
+Dashboard inspiration: https://population-dashboard.streamlit.app/?ref=blog.streamlit.io
+Streamlit Dashboard Support:
+https://towardsdatascience.com/choropleth-maps-101-using-plotly-5daf85e7275d/
+https://github.com/ArjanCodes/examples/blob/main/2024/streamlit/sidebar_expanded.py
+https://plotly.com/python/map-configuration/
+https://www.kaggle.com/datasets/justinrwong/us-states-to-abbreviations?resource=download
+https://docs.streamlit.io/develop/api-reference/charts/st.line_chart
+https://medium.com/@whyamit404/creating-your-first-streamlit-heatmap-6d1ec844431e

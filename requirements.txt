@@ -1,2 +1,11 @@
 jupyter
 nbformat
+pandas
+numpy
+seaborn
+matplotlib
+scipy
+statsmodels
+scikit-learn
+streamlit
+plotly
