@@ -5,8 +5,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import plotly.express as px
 import plotly.graph_objects as go
-from plotly.subplots import make_subplots
-from src.data_preprocessing import df_groupby_average, load_preprocessed_data
+from data_preprocessing import df_groupby_average, load_preprocessed_data
 
 
 
@@ -73,10 +72,6 @@ def main():
     create_line_plot(state, data_grouped_month_state)
     create_county_map(state= state, data = data_df)
     
-
-
-
-
 if __name__ == "__main__":
     main()
 

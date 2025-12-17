@@ -31,16 +31,16 @@ def load_preprocessed_data(path):
     return data_df
 
 
+## For Testing
+# data = load_preprocessed_data('./data/data_preprocessed.csv')
+# print(data[['State Name', 'STATEAB','County Name',  'Date Local', 'Month', 'Month Name', 'Temp Arithmetic Mean', 'Wind Arithmetic Mean', 'AQI', 'AQI Category']].head())
+# print(data['Month Name'].unique())
+# data_grouped_month = df_groupby_average(data, ['STATEAB', 'Month Name'], agg_col= ['AQI', 'Temp Arithmetic Mean', 'Wind Arithmetic Mean', 'Month'])
 
-data = load_preprocessed_data('./data/data_preprocessed.csv')
-print(data[['State Name', 'STATEAB','County Name',  'Date Local', 'Month', 'Month Name', 'Temp Arithmetic Mean', 'Wind Arithmetic Mean', 'AQI', 'AQI Category']].head())
-print(data['Month Name'].unique())
-data_grouped_month = df_groupby_average(data, ['STATEAB', 'Month Name'], agg_col= ['AQI', 'Temp Arithmetic Mean', 'Wind Arithmetic Mean', 'Month'])
-
-filter_data = data[data['STATEAB'] == "AZ"]
-data_grouped_month_county = df_groupby_average(filter_data, ['County Name', 'Month Name'], agg_col= ['AQI', 'Temp Arithmetic Mean', 'Wind Arithmetic Mean'])
-data_grouped_pivot = data_grouped_month_county.pivot( index = 'County Name', columns = 'Month Name', values = 'AQI').fillna(0)
-print(data_grouped_pivot)
+# filter_data = data[data['STATEAB'] == "AZ"]
+# data_grouped_month_county = df_groupby_average(filter_data, ['County Name', 'Month Name'], agg_col= ['AQI', 'Temp Arithmetic Mean', 'Wind Arithmetic Mean'])
+# data_grouped_pivot = data_grouped_month_county.pivot( index = 'County Name', columns = 'Month Name', values = 'AQI').fillna(0)
+# print(data_grouped_pivot)
 
 
 
