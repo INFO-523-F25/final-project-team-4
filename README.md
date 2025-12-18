@@ -62,7 +62,8 @@ This folder should contain the work that we complete each week. These notebooks 
 
 **src-** 
 
-This is where any scripts will be stored to referenced in the notebooks. This could be any custom graphing, preprocessing, or model validation functions. 
+This is where any scripts will be stored to referenced in the notebooks. This could be any custom graphing, preprocessing, or model validation functions. This folder will also 
+contain the script for the dashboard.  
 
 **All other files / folders** 
 
