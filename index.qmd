@@ -20,7 +20,7 @@ jupyter: python3
 
 ## Abstract
 
-This project was designed to analyze daily Air Quality Index (AQI) data from the United States Environmental Protection Agency. This analysis explored both geographical and seasonal features to understand their impact on the AQI value for the area. The result of this anylsis was an interactive dashboard was created to explore trends and visualize more complex relationships within the AQI data.
+This project was designed to analyze daily Air Quality Index (AQI) data from the United States Environmental Protection Agency. This analysis explored both geographical and seasonal features to understand their impact on the AQI value for the area. The result of this analysis was an interactive dashboard was created to explore trends and visualize more complex relationships within the AQI data.
 
 ## Introduction/Motivation
 
@@ -51,7 +51,7 @@ Since the temperature and wind seemed to have the greatest impact on the linear 
 
 ![Wireframe of AQI Databoard](images/AQI%20Dashboard%20Wireframe.png){#fig-wireframe fig-align="center" width="60%"}
 
-Based on these visualizations, there were a couple of observations that were worth noting. When looking at the heat map of the United States (Figure 2), the southwest states have higher AQI values than the rest of the United States. This aligns with the linear regression model since the southwest consists of mostly warmer states. However, Arkansas had a significantly higher AQI in January than its surrounding states.  Another interesting observation was found when looking at the distribution of the AQI values across counties in Arizona (Figure 3), There is a significant difference between Maricopa County and the other counties. This difference could be explained by the geographical differences between the counties.
+Based on these visualizations, there were a couple of observations that were worth noting. When looking at the heat map of the United States (Figure 2), the southwest states have higher AQI values than the rest of the United States. This aligns with the linear regression model since the southwest consists of mostly warmer states. However, Arkansas had a significantly higher AQI in January than its surrounding states. Another interesting observation was found when looking at the distribution of the AQI values across counties in Arizona (Figure 3), There is a significant difference between Maricopa County and the other counties. This difference could be explained by the geographical differences between the counties.
 
 ::: {#fig-heathamp_usa}
 ![United State Heatmap](images/AQI%20USA%20Heatmap.png){fig-align="center" width="60%"}
@@ -63,15 +63,26 @@ Based on these visualizations, there were a couple of observations that were wor
 
 ## Discussion/Conclusion
 
-Through this analysis, it can be determined that there are seasonal features that impact the overall Air Quality Index (AQI) for state counties. Through modeling techniques and visualizations, it was concluded that temperature and wind had a significant impact on the AQI of state counties. However, there was evidence to imply that there were geological features that impact the overall AQI as well. As a result, the incorporation of other geographical features, such as elevation, could enrich our dataset and support further correlation analyses. Furthermore, there were notable extremes in certain states and counties. To determine if these values are outliers, additional historical AQI values for each state would be helpful. 
+Through this analysis, it can be determined that there are seasonal features that impact the overall Air Quality Index (AQI) for state counties. Through modeling techniques and visualizations, it was concluded that temperature and wind had a significant impact on the AQI of state counties. However, there was evidence to imply that there were geological features that impact the overall AQI as well. As a result, the incorporation of other geographical features, such as elevation, could enrich our dataset and support further correlation analyses. Furthermore, there were notable extremes in certain states and counties. To determine if these values are outliers, additional historical AQI values for each state would be helpful.
 
 ## References
-Dashboard inspiration: https://population-dashboard.streamlit.app/?ref=blog.streamlit.io
+
+Dashboard inspiration:
+
+-   https://population-dashboard.streamlit.app/?ref=blog.streamlit.io
+
 Streamlit Dashboard Support:
-https://towardsdatascience.com/choropleth-maps-101-using-plotly-5daf85e7275d/
-https://github.com/ArjanCodes/examples/blob/main/2024/streamlit/sidebar_expanded.py
-https://plotly.com/python/map-configuration/
-https://www.kaggle.com/datasets/justinrwong/us-states-to-abbreviations?resource=download
-https://docs.streamlit.io/develop/api-reference/charts/st.line_chart
-https://medium.com/@whyamit404/creating-your-first-streamlit-heatmap-6d1ec844431e
-Data Sourced From: https://aqs.epa.gov/aqsweb/airdata/download_files.html
+
+-   https://towardsdatascience.com/choropleth-maps-101-using-plotly-5daf85e7275d/
+
+-   https://github.com/ArjanCodes/examples/blob/main/2024/streamlit/sidebar_expanded.py https://plotly.com/python/map-configuration/
+
+-   https://www.kaggle.com/datasets/justinrwong/us-states-to-abbreviations?resource=download
+
+-   https://docs.streamlit.io/develop/api-reference/charts/st.line_chart
+
+-   https://medium.com/@whyamit404/creating-your-first-streamlit-heatmap-6d1ec844431e
+
+Data Sourced From:
+
+-   https://aqs.epa.gov/aqsweb/airdata/download_files.html
