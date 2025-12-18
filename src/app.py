@@ -7,9 +7,14 @@ import plotly.express as px
 import plotly.graph_objects as go
 from data_preprocessing import df_groupby_average, load_preprocessed_data
 
-
+'''
+Create Streamlit dashboard for AQI Data.
+'''
 
 def configure_page(): 
+    '''
+    Sets up page header.
+    '''
     st.set_page_config(
     page_title= "AQI Dashboard",
     page_icon=":bar_chart:",
@@ -17,11 +22,22 @@ def configure_page():
 ) 
 
 def configure_overview(): 
+    '''
+    Builds Title and abstract
+    '''
     st.markdown('## AQI Dashboard')
     st.markdown('This dashboard will show visual AQI measurements from January 2025 to July 2025')
     st.markdown('The aim is to understand geographical and seasonal impacts of AQI acoss the United States')
 
 def configure_sidebar(state_list, month_name):
+    '''
+    Used to generate side bar with slicers
+    
+    :param state_list: list of unique states in data
+    :param month_name: list of unique month in data
+
+    returns the state and month selected by user.
+    '''
     month = st.sidebar.selectbox(
         "Month Selection", 
         month_name)
@@ -31,6 +47,12 @@ def configure_sidebar(state_list, month_name):
     return month, state_selected
 
 def create_map_plot(month_name, data): 
+    '''
+    Generates the figure of the United States Heatmap
+    
+    :param month_name: Month being filter on
+    :param data: AQI data being shown
+    '''
     filter_data = data[data['Month Name'] == month_name]
     st.markdown(f'### USA AQI for {month_name}')
     fig1 = px.choropleth(filter_data, locations= filter_data['STATEAB'], locationmode= "USA-states",
@@ -39,6 +61,12 @@ def create_map_plot(month_name, data):
     return fig1
 
 def create_line_plot(state, data):
+    '''
+    Generates the line plot of the State selected
+    
+    :param state: State Selected by user
+    :param data: AQI Data being shown
+    '''
     filter_data = data[data['STATEAB'] == state]
     st.markdown(f'### Temperature, Wind and AQI over Time for {state}')
     filter_data = pd.melt(filter_data, id_vars = 'Month Name', value_vars= ['AQI', 'Temp Arithmetic Mean', 'Wind Arithmetic Mean'])
@@ -46,6 +74,12 @@ def create_line_plot(state, data):
 
 
 def create_county_map(state,data):
+    '''
+    Generating conty vs month heatmap
+    
+    :param state: State being filter on
+    :param data: AQI Data being shown
+    '''
     filter_data = data[data['STATEAB'] == state]
     data_grouped_month_county = df_groupby_average(filter_data, ['County Name', 'Month Name'], agg_col= ['AQI', 'Temp Arithmetic Mean', 'Wind Arithmetic Mean'])
     data_grouped_pivot = data_grouped_month_county.pivot( index = 'County Name', columns = 'Month Name', values = 'AQI')
