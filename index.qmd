@@ -39,6 +39,10 @@ From there we moved onto cleaning the temperature dataset. This was significantl
 
 The data cleaning process for the wind dataset was almost identical to that of the temperature dataset, dropping and renaming the same columns and reordering the columns in the same way in the end. The resulting wind dataset also had 16 columns (5 float, 4 integer, and 7 objects) and only one incomplete column, being Local Site Name. Once all three datasets had been cleaned and standardized, the wind and temperature were merged on the columns that would have the same values including State Name, County Name, Local Site Name, Address, Site Num, Longitude, Latitude, and Date Local. This first merge was then merged once more with the AQI dataset using the State Name, County Name, and Date Local columns. The resulting master dataset had 28 columns (8 float, 8 integer, and 12 objects) with only the Local Site Name having some missing values remaining. The final phase of the EDA and preprocessing stage was to visualize the three variables by state. This began by grouping the Temp Arithmetic Mean, Wind Arithmetic Mean, and AQI by State Name and calculating the mean value for each state. These values were converted into lists and inputted into a visualization with 3 subplots displaying the average temperature, wind, and AQI by state for the first 6 months of 2025.
 
+::: {#fig-eda_viz}
+![EDA Plot](images/EDA.png){fig-align="center" width="60%"}
+:::
+
 ## Analysis
 
 Two types of regression analyses were conducted. First, an Ordinary Least Squares (OLS) regression was created using the statsmodel library to quantify the linear relationship between AQI as the dependent variable and eight continuous predictors derived from wind and temperature measurements. A constant was added to the model to account for the intercept. The second model created was a predictive linear regression model that was trained, incorporating both the same continuous predictors and a categorical variable for AQI. As such, the dataset was split into training and testing subsets. Linear regression was then used to fit the model and evaluate performance with mean squared error (MSE) and R² metrics.
